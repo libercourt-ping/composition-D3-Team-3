@@ -1,0 +1,222 @@
+:root {
+  --bord: 0.5rem;
+  --table-width: 90%;
+  --table-mt: 1.5rem;
+  --fond: rgb(190, 190, 190);
+  --fond-table: whitesmoke;
+  --unset: rgb(250, 250, 250);
+  --check-color: rgba(13, 117, 13, 0.923);
+  --cross-color: rgb(165, 42, 42);
+  --no-info: rgb(234, 205, 112);
+  --remplacant: rgb(127, 63, 127);
+  --waiting-color: rgba(73, 86, 210);
+  --chat: rgba(73, 86, 130);
+  --next-match-border: rgb(185, 0, 38);
+}
+
+h1 {
+  font-family: "Campus";
+}
+
+h2 {
+  font-family: "Trend";
+}
+
+#logo {
+  background-image: url("../images/logo.png");
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  animation: looper 1s linear 1;
+  background-color: var(--unset);
+  position: relative;
+  cursor: pointer;
+}
+
+#logo:hover #info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#info {
+  position: absolute;
+  top: 0;
+  left: 120%;
+  width: 20vw;
+  transform: rotate(0deg);
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+#title {
+  border: none;
+  animation: freinage 3s linear 1;
+}
+
+table {
+  width: calc(100% - (2 * var(--bord)));
+  background-color: var(--fond-table);
+}
+
+th,
+td {
+  border: 1px dotted lightgrey;
+}
+
+td {
+  height: 3rem;
+}
+
+table tr:first-child th {
+  border-top: none;
+}
+
+table tr th:first-child {
+  border-left: none;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+  border-right: none;
+}
+
+table tr:last-child td,
+table tr:last-child th {
+  border-bottom: none;
+}
+
+div:has(> table) {
+  border: 1px solid var(--fond);
+  border-radius: 10px;
+  background-color: var(--fond-table);
+  padding: var(--bord) 0;
+}
+
+td {
+  text-align: center;
+}
+
+td::before {
+  content: "";
+  border-radius: 20px;
+  padding: 0.3rem 0.6rem;
+  font-weight: bold;
+}
+td.non::before {
+  content: "!";
+  padding: 0.3rem 0.8rem;
+  background-color: var(--no-info);
+  color: black;
+}
+td.oui::before {
+  content: "\2713";
+  background-color: var(--check-color);
+  color: whitesmoke;
+}
+td.absent::before {
+  content: "\2715";
+  background-color: var(--cross-color);
+  color: white;
+}
+td.remplacant::before {
+  content: "\25C9";
+  background-color: var(--unset);
+  border: 1px solid lightgrey;
+  color: var(--remplacant);
+  padding: 0.3rem 0.5rem;
+}
+td.previsionnel::before {
+  content: "\25C9";
+  padding: 0.3rem 0.5rem;
+  border: 1px solid lightgrey;
+  background-color: var(--unset);
+  color: var(--waiting-color);
+}
+
+th.th_joueur {
+  padding: 0 1rem;
+}
+
+th.exterieur::after {
+  content: "\000A(extérieur)";
+  color: rgb(170, 40, 40);
+}
+
+th.exterieur {
+  color: rgba(60, 60, 120);
+}
+
+th.interne {
+  color: rgb(120, 120, 120);
+}
+
+th.disabledDate,
+td.disabledDate {
+  opacity: 0.2;
+}
+
+.led {
+  font-family: "LED";
+  color: #fa0;
+  animation: scroll 10s linear infinite;
+  text-shadow: 0 0 5px #0f04, 0 0 10px #0f04, 0 0 20px #0f04;
+}
+
+footer:has(> .led) {
+  overflow: hidden;
+}
+
+.msg {
+  display: none;
+  cursor: default;
+}
+
+.msg > * {
+  position: relative;
+}
+
+.chat:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.chat:hover .msg {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--chat);
+}
+
+.chat-msg {
+  background-color: var(--fond-table);
+  color: var(--chat);
+  border-radius: 10px;
+}
+
+.chat-author {
+  color: var(--fond);
+}
+
+.submit:hover {
+  background-color: var(--cross-color);
+  cursor: pointer;
+}
+
+
+.winner {
+    background-color: var(--check-color);
+    color: white;
+}
+.loser {
+    background-color: var(--cross-color);
+    color: white;
+}
+.match-nul {
+    background-color: var(--fond);
+}
