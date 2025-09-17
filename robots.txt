@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://libercourt-ping.github.io/composition-D3-Team-3/sitemap.xml
