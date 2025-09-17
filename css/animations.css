@@ -1,0 +1,60 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
+
+@keyframes freinage {
+  0% {
+    transform: translateX(200%);
+    font-style: italic;
+    border: none;
+    border-bottom: 10px solid;
+    border-image: url("../images/frein.png") 30 stretch;
+  }
+  5% {
+    transform: translateX(-20%);
+  }
+  18% {
+    transform: translateX(0%);
+  }
+  45% {
+    transform: translateX(0%);
+    border-image: url("../images/frein.png") 30 stretch;
+    font-style: normal;
+    border: none;
+  }
+  100% {
+    transform: translateX(0%);
+    font-style: normal;
+  }
+}
+
+@keyframes looper {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  45% {
+    transform: rotate(180deg);
+  }
+  90% {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    border: 5px solid var(--planning-red);
+  }
+  100% {
+    border-color: transparent;
+  }
+}

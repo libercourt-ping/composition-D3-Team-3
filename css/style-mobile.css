@@ -1,0 +1,115 @@
+h3 {
+  font-family: "Campus";
+  font-size: 14pt;
+}
+
+h4 {
+  font-family: "Trend";
+  font-size: 12pt;
+}
+
+#logo-mobile {
+  background-image: url("../images/logo.png");
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  animation: looper 1s linear 1;
+  background-color: var(--unset);
+  position: relative;
+}
+
+.teams:has(.next-match) {
+  animation: blink 1s linear 3;
+  border: 2px solid var(--planning-red);
+}
+
+.presents,
+.remplacants,
+.previsionnels,
+.renforts,
+.absents {
+  user-select: none;
+}
+
+.exterieur-mobile,
+.interne-mobile {
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.exterieur-mobile {
+  color: lightblue;
+  text-shadow: #3c3c78f0 1px 1px, #3c3c78f0 1px -1px, #3c3c78f0 -1px -1px,
+    #3c3c78f0 -1px 1px;
+}
+
+.exterieur-mobile::after {
+  content: "\000A(extérieur)";
+  text-shadow: none;
+  color: var(--planning-red);
+  letter-spacing: initial;
+}
+
+.interne-mobile {
+  color: lightgreen;
+  text-shadow: #0509 1px 1px, #0509 1px -1px, #0509 -1px -1px, #0509 -1px 1px;
+}
+
+.renforts {
+  color: var(--bg-renfort);
+}
+
+.remplacants {
+  color: var(--bg-remplacant);
+}
+
+.presents {
+  color: var(--planning-green);
+}
+.absents {
+  color: var(--planning-red);
+}
+
+.previsionnels {
+  color: var(--waiting-color);
+}
+
+.teams {
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.rdv {
+  color: grey;
+}
+
+.title {
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.possibles {
+  background-color: rgba(0, 128, 0, 0.077);
+  border-radius: 0 0 0 10px;
+}
+.impossibles {
+  background-color: rgba(255, 0, 0, 0.077);
+  border-radius: 0 0 10px 0;
+}
+
+.disabled-match {
+  opacity: var(--disabled-opacity);
+  background-color: #8884;
+}
+
+.score-mobile::before {
+  color: black;
+  margin-right: 0.5rem;
+}
+
+.score-mobile {
+  padding: 0 0.5rem 0 0.25rem;
+  vertical-align: middle;
+}
