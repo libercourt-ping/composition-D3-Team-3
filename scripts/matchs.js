@@ -18,6 +18,8 @@ const joueurs = {
   MATHEO: new Joueurs("DERVAUX", "Mathéo", false),
   LEO: new Joueurs("BENOÎT", "Léo", false),
   HUGO: new Joueurs("DUBRULLE", "Hugo", false),
+  STEVE: new Joueurs("MEQUIGNON", "Steeve", false),
+  KAHYS: new Joueurs("?", "Kahys", false)
 };
 
 function setConfig(matchs) {
@@ -34,6 +36,8 @@ function setConfig(matchs) {
     joueurs.MATHEO,
     joueurs.HUGO,
     joueurs.LEO,
+    joueurs.STEVE,
+    joueurs.KAHYS
   ]);
   matchs[0].setDoubles(
     [joueurs.CEDRIC, joueurs.FRED],
@@ -54,6 +58,8 @@ function setConfig(matchs) {
     joueurs.MATHEO,
     joueurs.HUGO,
     joueurs.LEO,
+    joueurs.STEVE,
+    joueurs.KAHYS
   ]);
   matchs[1].setDoubles(
     [joueurs.CEDRIC, joueurs.YOHAN],
@@ -66,7 +72,7 @@ function setConfig(matchs) {
     joueurs.MATHEO,
     joueurs.LEO,
   ]);
-  matchs[2].setAbsents([joueurs.VINCENT, joueurs.HAMED, joueurs.NATHALIE]);
+  matchs[2].setAbsents([joueurs.VINCENT, joueurs.HAMED, joueurs.NATHALIE, joueurs.STEVE, joueurs.HUGO, joueurs.KAHYS]);
   matchs[2].setRemplacants([joueurs.FRED]);
   matchs[2].setRenforts([joueurs.QUENTIN]);
   matchs[2].setPrevisionnels([]);
@@ -91,6 +97,8 @@ function setConfig(matchs) {
     joueurs.MATHEO,
     joueurs.HUGO,
     joueurs.LEO,
+    joueurs.STEVE,
+    joueurs.KAHYS
   ]);
   matchs[3].setDoubles(
     [joueurs.CEDRIC, joueurs.YOHAN],
@@ -113,6 +121,8 @@ function setConfig(matchs) {
     joueurs.FRED,
     joueurs.LEO,
     joueurs.QUENTIN,
+    joueurs.STEVE,
+    joueurs.KAHYS
   ]);
   matchs[4].setDoubles(
     [joueurs.CEDRIC, joueurs.HUGO],
@@ -120,7 +130,7 @@ function setConfig(matchs) {
   );
   matchs[4].setRdv("08 h 15");
 
-  matchs[5].setPlayers([joueurs.VINCENT]);
+  matchs[5].setPlayers([joueurs.VINCENT, joueurs.YOHAN, joueurs.STEVE, joueurs.KAHYS]);
   matchs[5].setPrevisionnels([joueurs.NATHALIE, joueurs.QUENTIN]);
   matchs[5].setAbsents([
     joueurs.FRED,
@@ -128,9 +138,9 @@ function setConfig(matchs) {
     joueurs.MATHEO,
     joueurs.HUGO,
     joueurs.LEO,
+    joueurs.CEDRIC
   ]);
-  matchs[5].setRemplacants([joueurs.CEDRIC, joueurs.YOHAN]);
-  //   matchs[5].setRdv("08 h 20");
+  matchs[5].setRdv("08 h 15");
 
   matchs[6].setPlayers([joueurs.VINCENT, joueurs.CEDRIC]);
   matchs[6].setPrevisionnels([joueurs.HAMED]);
@@ -139,6 +149,8 @@ function setConfig(matchs) {
     joueurs.HUGO,
     joueurs.LEO,
     joueurs.NATHALIE,
+    joueurs.KAHYS,
+    joueurs.STEVE
   ]);
   matchs[6].setRemplacants([joueurs.QUENTIN, joueurs.FRED, joueurs.YOHAN]);
 }
