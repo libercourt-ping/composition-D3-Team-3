@@ -260,7 +260,7 @@ function init() {
       thM.classList.add(isAdvRec ? "exterieur" : "interne");
       trhead2.appendChild(thM);
       const thH = document.createElement("th");
-      thH.textContent = match.rdv ? `${match.rdv} à la salle` : "À définir";
+      thH.textContent = match.rdv ? `${match.rdv} à ${match.salle}` : "À définir";
       thH.classList.add(isAdvRec ? "h_exterieur" : "h_interne");
       trhead3.appendChild(thH);
       const thScore = document.createElement("th");
