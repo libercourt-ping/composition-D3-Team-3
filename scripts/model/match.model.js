@@ -71,7 +71,8 @@ class Match {
     this.absents = absents;
   }
 
-  setRdv(rdv) {
+  setRdv(rdv, salle = null) {
     this.rdv = rdv;
+    this.salle = salle ?? "la salle";
   }
 }
