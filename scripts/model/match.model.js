@@ -15,7 +15,9 @@ class Match {
     this.previsionnels = [];
     this.remplacants = [];
     this.renfortsAilleurs = [];
-    this.rdv = !this.isRecepteurA ? null : "09 h 00";
+    if (this.isRecepteurA) {
+      this.setRdv("09 h 00")
+    }
     Match.all.push(this);
   }
 
