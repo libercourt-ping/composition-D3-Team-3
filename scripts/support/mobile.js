@@ -129,7 +129,7 @@ function initMobile() {
         isAdvRec ? "exterieur-mobile" : "interne-mobile"
       );
       spanRDV.textContent = `RDV : ${
-        match.rdv ? `${match.rdv} à la salle` : "À définir"
+        match.rdv ? `${match.rdv} à ${match.salle}` : "À définir"
       }`;
       spanScoreTitle.textContent = "Score\u00A0:\u00A0";
       spanScore.textContent = !isBlankOrNull(match.scoreClub)
