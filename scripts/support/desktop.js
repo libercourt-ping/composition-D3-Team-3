@@ -320,7 +320,7 @@ function init() {
     trhead.appendChild(nbMatchs);
 
     const para = document.getElementById("led");
-    const simplifyAdversaire = simplifyClub(nextMatch.adversaire);
+    const simplifyAdversaire = Match.simplifyClub(nextMatch.adversaire);
     para.textContent = para.textContent.replace(
       "%MATCH%",
       `${nextMatch.dateFR} - ${simplifyAdversaire}`
