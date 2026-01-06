@@ -6,7 +6,7 @@ function initSupportMobile(doc) {
   divLogo.id = "logo-mobile";
   cls(
     divLogo,
-    "flex items-center justify-start ml-4 w-12 h-12 rounded-full p-2 border-2"
+    "flex items-center justify-start ml-4 w-12 h-12 rounded-full p-2 border-2",
   );
 
   const img = document.createElement("img");
@@ -25,7 +25,7 @@ function initSupportMobile(doc) {
   const h3 = document.createElement("h3");
   const h4 = document.createElement("h4");
   h3.textContent = "Planning - Ping pong";
-  h4.textContent = "Saison 2025-2026, phase 1";
+  h4.textContent = "Saison 2025-2026, phase 2";
   subDiv2.appendChild(h3);
   subDiv2.appendChild(h4);
 
@@ -52,12 +52,12 @@ function initSupportMobile(doc) {
   messages.id = "messages";
   cls(
     messager,
-    "absolute flex items-center text-base justify-center bottom-1 right-1 w-10 h-10 rounded-full chat cursor-pointer border-black border-2 border-dotted select-none"
+    "absolute flex items-center text-base justify-center bottom-1 right-1 w-10 h-10 rounded-full chat cursor-pointer border-black border-2 border-dotted select-none",
   );
   const width = (95 * window.innerWidth) / 100;
   cls(
     chat,
-    `min-w-[${width}px] max-h-[80vh] h-[60vh] bottom-8 right-0 msg rounded-lg`
+    `min-w-[${width}px] max-h-[80vh] h-[60vh] bottom-8 right-0 msg rounded-lg`,
   );
 
   doc.appendChild(messager);
@@ -100,15 +100,16 @@ function initMobile() {
     doc.style.display = "flex";
     const content = initSupportMobile(doc);
     const nextMatch = Match.nextMatch();
-    for (let i = 0; i < matchs.length; ++i) {
-      const match = matchs[i];
-      const isFinishMatch = match.date.getTime() < nextMatch.date.getTime();
+    const matches = Match.all;
+    for (let i = 0; i < matches.length; ++i) {
+      const match = matches[i];
+      const isFinishMatch = nextMatch && match.date.getTime() < nextMatch.date.getTime();
       const div = document.createElement("div");
       const marginTop = i === 0 ? "mt-2" : "mt-4";
       const disabledClass = isFinishMatch ? "disabled-match" : "enabled";
       cls(
         div,
-        `${marginTop} w-full flex flex-col border rounded teams ${disabledClass}`
+        `${marginTop} w-full flex flex-col border rounded teams ${disabledClass}`,
       );
       const divTitle = document.createElement("div");
       cls(divTitle, "flex flex-col w-full items-start justify-center p-1");
@@ -126,7 +127,7 @@ function initMobile() {
       spanTitle1.textContent = match.dateFR;
       spanTitle2.textContent = Match.simplifyClub(adversaire);
       spanTitle2.classList.add(
-        isAdvRec ? "exterieur-mobile" : "interne-mobile"
+        isAdvRec ? "exterieur-mobile" : "interne-mobile",
       );
       spanRDV.textContent = `RDV : ${
         match.rdv ? `${match.rdv} à ${match.salle}` : "À définir"
@@ -139,8 +140,8 @@ function initMobile() {
         match.scoreClub > match.scoreAdversaire
           ? "winner"
           : match.scoreClub < match.scoreAdversaire
-          ? "loser"
-          : "match-nul"
+            ? "loser"
+            : "match-nul",
       );
       cls(spanTitle1, "title italic");
       cls(spanTitle2, "title");
@@ -155,7 +156,7 @@ function initMobile() {
       divScore.appendChild(spanScore);
       divTitle.appendChild(divScore);
 
-      if (nextMatch.dateFR === match.dateFR) {
+      if (nextMatch && nextMatch.dateFR === match.dateFR) {
         cls(spanTitle1, "next-match");
         cls(spanTitle2, "next-match");
       }
@@ -213,7 +214,7 @@ function initMobile() {
           }
         }
       }
-      const realAbsents = match.absents.filter(el => el.teammate);
+      const realAbsents = match.absents.filter((el) => el.teammate);
       if (match.remplacants.length > 0 || realAbsents.length > 0) {
         const divJoueursRemplacants = document.createElement("div");
         cls(divJoueursRemplacants, classDiv + " impossibles");
@@ -230,7 +231,7 @@ function initMobile() {
             divJoueursRemplacants.appendChild(joueur);
           }
         }
-  
+
         if (realAbsents.length > 0) {
           const spanAbsents = document.createElement("span");
           spanAbsents.textContent = "Absents";

@@ -1,3 +1,6 @@
+/**
+ * @type {Match[]}
+ */
 let matchs = [];
 
 async function getMatches() {
@@ -27,7 +30,7 @@ async function getMatches() {
     if (!isBlankOrNull(el.scorea) && !isBlankOrNull(el.scoreb)) {
       const scorea = parseInt(el.scorea, 10);
       const scoreb = parseInt(el.scoreb, 10);
-      
+
       match.setScore(scorea, scoreb);
     }
     return match;
@@ -73,7 +76,7 @@ window.onload = function () {
           init();
         }
       }
-    }
+    },
   );
 };
 function getElements() {
