@@ -124,7 +124,7 @@ function initMobile() {
       const recepteur = match.club_recepteur;
       const isAdvRec = adversaire === recepteur;
       spanTitle1.textContent = match.dateFR;
-      spanTitle2.textContent = adversaire;
+      spanTitle2.textContent = Match.simplifyClub(adversaire);
       spanTitle2.classList.add(
         isAdvRec ? "exterieur-mobile" : "interne-mobile"
       );
