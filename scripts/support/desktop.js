@@ -89,7 +89,7 @@ function initDesktop(doc) {
     const footer = document.createElement("footer");
     cls(
       footer,
-      "fixed bottom-0 left-0 flex w-full h-[10vh] bg-gray-800 items-center justify-center"
+      "fixed bottom-0 left-0 flex w-full max-h-[10vh] min-h-[5vh] bg-gray-800 items-center justify-center"
     );
     const para = document.createElement("p");
     para.id = "led";
