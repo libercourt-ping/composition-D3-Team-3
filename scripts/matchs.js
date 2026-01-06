@@ -8,154 +8,132 @@ class Joueurs {
 }
 
 const joueurs = {
+  CEDRIC: new Joueurs("BOUQUET", "Cédric", true),
   NATHALIE: new Joueurs("MILLE", "Nathalie", true),
   VINCENT: new Joueurs("PIERSON", "Vincent", true),
   YOHAN: new Joueurs("GUILBERT", "Yohan", true),
-  CEDRIC: new Joueurs("BOUQUET", "Cédric", true),
-  QUENTIN: new Joueurs("DUBRULLE", "Quentin", true),
   HAMED: new Joueurs("ATMANE", "Hamed", true),
-  FRED: new Joueurs("BERTOUX", "Frédéric", true),
-  MATHEO: new Joueurs("DERVAUX", "Mathéo", false),
+  STEEVE: new Joueurs("MEQUIGNON", "Steeve", true),
   LEO: new Joueurs("BENOÎT", "Léo", false),
-  HUGO: new Joueurs("DUBRULLE", "Hugo", false),
-  STEVE: new Joueurs("MEQUIGNON", "Steeve", false),
-  KAHYS: new Joueurs("?", "Kahys", false)
+  YOLAN: new Joueurs("/", "Yolan", false),
+  MATHIS: new Joueurs("DUBRULLE", "Mathis", false),
 };
 
 function setConfig(matchs) {
   matchs[0].setPlayers([
-    joueurs.CEDRIC,
-    joueurs.VINCENT,
+    joueurs.YOLAN,
+    joueurs.MATHIS,
     joueurs.YOHAN,
-    joueurs.FRED,
+    joueurs.STEEVE,
   ]);
   matchs[0].setAbsents([
-    joueurs.HAMED,
-    joueurs.QUENTIN,
+    joueurs.CEDRIC,
     joueurs.NATHALIE,
-    joueurs.MATHEO,
-    joueurs.HUGO,
     joueurs.LEO,
-    joueurs.STEVE,
-    joueurs.KAHYS
+    joueurs.VINCENT,
+    joueurs.HAMED,
   ]);
   matchs[0].setDoubles(
-    [joueurs.CEDRIC, joueurs.FRED],
-    [joueurs.VINCENT, joueurs.YOHAN]
+    [joueurs.YOHAN, joueurs.STEEVE],
+    [joueurs.MATHIS, joueurs.YOLAN],
   );
-  matchs[0].setRdv("08 h 10");
 
   matchs[1].setPlayers([
-    joueurs.CEDRIC,
+    joueurs.LEO,
     joueurs.VINCENT,
-    joueurs.YOHAN,
-    joueurs.FRED,
+    joueurs.CEDRIC,
+    joueurs.HAMED,
   ]);
   matchs[1].setAbsents([
-    joueurs.HAMED,
+    joueurs.YOHAN,
+    joueurs.STEEVE,
     joueurs.NATHALIE,
-    joueurs.QUENTIN,
-    joueurs.MATHEO,
-    joueurs.HUGO,
-    joueurs.LEO,
-    joueurs.STEVE,
-    joueurs.KAHYS
+    joueurs.MATHIS,
+    joueurs.YOLAN,
   ]);
   matchs[1].setDoubles(
-    [joueurs.CEDRIC, joueurs.YOHAN],
-    [joueurs.VINCENT, joueurs.FRED]
+    [joueurs.CEDRIC, joueurs.VINCENT],
+    [joueurs.HAMED, joueurs.LEO],
   );
 
   matchs[2].setPlayers([
+    joueurs.VINCENT,
     joueurs.CEDRIC,
-    joueurs.YOHAN,
-    joueurs.MATHEO,
-    joueurs.LEO,
+    joueurs.STEEVE,
+    joueurs.HAMED,
   ]);
-  matchs[2].setAbsents([joueurs.VINCENT, joueurs.HAMED, joueurs.NATHALIE, joueurs.STEVE, joueurs.HUGO, joueurs.KAHYS]);
-  matchs[2].setRemplacants([joueurs.FRED]);
-  matchs[2].setRenforts([joueurs.QUENTIN]);
-  matchs[2].setPrevisionnels([]);
+  matchs[2].setAbsents([
+    joueurs.YOHAN,
+    joueurs.LEO,
+    joueurs.NATHALIE,
+    joueurs.MATHIS,
+    joueurs.YOLAN,
+  ]);
   matchs[2].setDoubles(
-    [joueurs.CEDRIC, joueurs.YOHAN],
-    [joueurs.MATHEO, joueurs.LEO]
+    [joueurs.CEDRIC, joueurs.VINCENT],
+    [joueurs.STEEVE, joueurs.HAMED],
   );
-  matchs[2].setRdv("08 h 40");
 
   matchs[3].setPlayers([
-    joueurs.CEDRIC,
-    joueurs.NATHALIE,
-    joueurs.FRED,
+    joueurs.VINCENT,
+    joueurs.STEEVE,
+    joueurs.HAMED,
     joueurs.YOHAN,
   ]);
-  matchs[3].setPrevisionnels([]);
-  matchs[3].setRemplacants([]);
   matchs[3].setAbsents([
-    joueurs.VINCENT,
-    joueurs.HAMED,
-    joueurs.QUENTIN,
-    joueurs.MATHEO,
-    joueurs.HUGO,
+    joueurs.CEDRIC,
     joueurs.LEO,
-    joueurs.STEVE,
-    joueurs.KAHYS
+    joueurs.NATHALIE,
+    joueurs.MATHIS,
+    joueurs.YOLAN,
   ]);
   matchs[3].setDoubles(
-    [joueurs.CEDRIC, joueurs.YOHAN],
-    [joueurs.NATHALIE, joueurs.FRED]
+    [joueurs.YOHAN, joueurs.VINCENT],
+    [joueurs.STEEVE, joueurs.HAMED],
   );
+  matchs[3].setRdv("8h30");
 
-  matchs[4].setPlayers([
-    joueurs.VINCENT,
-    joueurs.CEDRIC,
-    joueurs.YOHAN,
-    joueurs.HUGO,
-  ]);
-  matchs[4].setPrevisionnels([]);
-  matchs[4].setRemplacants([]);
+  matchs[4].setPlayers([joueurs.CEDRIC, joueurs.YOHAN, joueurs.VINCENT]);
+  matchs[4].setPrevisionnels([joueurs.STEEVE]);
   matchs[4].setAbsents([
-    joueurs.NATHALIE,
-    joueurs.HAMED,
-    joueurs.MATHEO,
-    joueurs.HUGO,
-    joueurs.FRED,
     joueurs.LEO,
-    joueurs.QUENTIN,
-    joueurs.STEVE,
-    joueurs.KAHYS
+    joueurs.NATHALIE,
+    joueurs.MATHIS,
+    joueurs.YOLAN,
   ]);
-  matchs[4].setDoubles(
-    [joueurs.CEDRIC, joueurs.HUGO],
-    [joueurs.VINCENT, joueurs.YOHAN]
+  matchs[4].setRemplacants([joueurs.HAMED]);
+  matchs[4].setGlobalDoubles(
+    [joueurs.YOHAN, joueurs.VINCENT],
+    [joueurs.CEDRIC, joueurs.STEEVE],
   );
-  matchs[4].setRdv("08 h 15");
 
-  matchs[5].setPlayers([joueurs.VINCENT, joueurs.YOHAN, joueurs.STEVE, joueurs.KAHYS]);
-  matchs[5].setPrevisionnels([]);
+  matchs[5].setPlayers([joueurs.CEDRIC, joueurs.YOHAN, joueurs.VINCENT]);
+  matchs[5].setPrevisionnels([joueurs.HAMED]);
   matchs[5].setAbsents([
-    joueurs.FRED,
-    joueurs.HAMED,
-    joueurs.MATHEO,
-    joueurs.HUGO,
-    joueurs.LEO,
-    joueurs.CEDRIC,
-    joueurs.NATHALIE, 
-    joueurs.QUENTIN
-  ]);
-  matchs[5].setRdv("08 h 15");
-
-  matchs[6].setPlayers([joueurs.VINCENT, joueurs.CEDRIC]);
-  matchs[6].setPrevisionnels([joueurs.FRED]);
-  matchs[6].setAbsents([
-    joueurs.MATHEO,
-    joueurs.HUGO,
+    joueurs.STEEVE,
     joueurs.LEO,
     joueurs.NATHALIE,
-    joueurs.KAHYS,
-    joueurs.STEVE,
-    joueurs.HAMED,
-    joueurs.QUENTIN
+    joueurs.MATHIS,
+    joueurs.YOLAN,
   ]);
-  matchs[6].setRemplacants([joueurs.YOHAN]);
-  matchs[6].setRdv("08 h 40", "Salle LANGLET, complexe Antoine Victor, Libercourt");
+  matchs[5].setGlobalDoubles(
+    [joueurs.HAMED, joueurs.CEDRIC],
+    [joueurs.VINCENT, joueurs.YOHAN],
+  );
+  matchs[5].setRdv("8h15");
+
+  matchs[6].setPlayers([joueurs.STEEVE, joueurs.CEDRIC, joueurs.YOHAN]);
+  matchs[6].setPrevisionnels([joueurs.HAMED]);
+  matchs[6].setAbsents([
+    joueurs.VINCENT,
+    joueurs.LEO,
+    joueurs.YOLAN,
+    joueurs.MATHIS,
+    joueurs.NATHALIE,
+  ]);
+
+  matchs[6].setGlobalDoubles(
+    [joueurs.CEDRIC, joueurs.YOHAN],
+    [joueurs.HAMED, joueurs.STEEVE],
+  );
 }

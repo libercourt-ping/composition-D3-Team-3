@@ -1,4 +1,7 @@
 class Match {
+  /**
+   * @type {Match[]}
+   */
   static all = [];
   constructor(date, clubA, clubB, reformateHour = true) {
     if (reformateHour) {
@@ -16,19 +19,23 @@ class Match {
     this.remplacants = [];
     this.renfortsAilleurs = [];
     if (this.isRecepteurA) {
-      this.setRdv("09 h 00")
+      this.setRdv("09 h 00");
     }
     Match.all.push(this);
   }
 
   static simplifyClub(club) {
-  const words = club.split(" ");
-  const MAX_WORDS_KEPT_IN_CLUB = 3;
-  return words
-    .filter(
-      (val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB && !isNumeric(val) && !val.startsWith("(")
-    ).join(" ");
-}
+    const words = club.split(" ");
+    const MAX_WORDS_KEPT_IN_CLUB = 3;
+    return words
+      .filter(
+        (val, ind) =>
+          ind < MAX_WORDS_KEPT_IN_CLUB &&
+          !isNumeric(val) &&
+          !val.startsWith("("),
+      )
+      .join(" ");
+  }
 
   static nextMatch() {
     const today = new Date();
@@ -47,19 +54,57 @@ class Match {
     const joueurs = this.players;
     if (paire1.length + paire2.length != joueurs.length) {
       throw new Error(
-        "Le nombre de joueurs ne correspond pas aux doubles indiqués"
+        "Le nombre de joueurs ne correspond pas aux doubles indiqués",
       );
     }
     if (paire1.length != 2 || paire2.length != 2) {
       throw new Error("Il faut 2 joueurs par paire de double");
     }
     const isWellRepart = joueurs.every(
-      (el) => paire1.includes(el) || paire2.includes(el)
+      (el) => paire1.includes(el) || paire2.includes(el),
     );
     if (!isWellRepart) {
       throw new Error("Les joueurs du double doivent participer au match");
     }
-    this.doubles = {paire1, paire2};
+    this.doubles = { paire1, paire2 };
+  }
+
+  setDoublesPrevisionnels(paire1, paire2) {
+    const joueurs = this.previsionnels;
+    if (paire1.length + paire2.length != joueurs.length) {
+      throw new Error(
+        "Le nombre de joueurs ne correspond pas aux doubles indiqués",
+      );
+    }
+    if (paire1.length != 2 || paire2.length != 2) {
+      throw new Error("Il faut 2 joueurs par paire de double");
+    }
+    const isWellRepart = joueurs.every(
+      (el) => paire1.includes(el) || paire2.includes(el),
+    );
+    if (!isWellRepart) {
+      throw new Error("Les joueurs du double doivent participer au match");
+    }
+    this.doubles = { paire1, paire2 };
+  }
+
+  setGlobalDoubles(paire1, paire2) {
+    const joueurs = [...this.previsionnels, ...this.players];
+    if (paire1.length + paire2.length != joueurs.length) {
+      throw new Error(
+        "Le nombre de joueurs ne correspond pas aux doubles indiqués",
+      );
+    }
+    if (paire1.length != 2 || paire2.length != 2) {
+      throw new Error("Il faut 2 joueurs par paire de double");
+    }
+    const isWellRepart = joueurs.every(
+      (el) => paire1.includes(el) || paire2.includes(el),
+    );
+    if (!isWellRepart) {
+      throw new Error("Les joueurs du double doivent participer au match");
+    }
+    this.doubles = { paire1, paire2 };
   }
 
   setPlayers(players) {

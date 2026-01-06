@@ -7,7 +7,7 @@ function initDesktop(doc) {
     divLogo.id = "logo";
     cls(
       divLogo,
-      "flex items-center justify-start ml-4 w-18 h-18 rounded-full p-2 border-2"
+      "flex items-center justify-start ml-4 w-18 h-18 rounded-full p-2 border-2",
     );
 
     const spanInfo = document.createElement("span");
@@ -48,7 +48,7 @@ function initDesktop(doc) {
     const h1 = document.createElement("h1");
     const h2 = document.createElement("h2");
     h1.textContent = "Planning - Ping pong";
-    h2.textContent = "Saison 2025-2026, phase 1";
+    h2.textContent = "Saison 2025-2026, phase 2";
     subDiv2.appendChild(h1);
     subDiv2.appendChild(h2);
 
@@ -89,7 +89,7 @@ function initDesktop(doc) {
     const footer = document.createElement("footer");
     cls(
       footer,
-      "fixed bottom-0 left-0 flex w-full max-h-[10vh] min-h-[5vh] bg-gray-800 items-center justify-center"
+      "fixed bottom-0 left-0 flex w-full max-h-[10vh] min-h-[5vh] bg-gray-800 items-center justify-center",
     );
     const para = document.createElement("p");
     para.id = "led";
@@ -114,7 +114,7 @@ function initDesktop(doc) {
     messages.id = "messages";
     cls(
       messager,
-      "absolute flex items-center text-base justify-center top-1 right-1 w-10 h-10 rounded-full chat cursor-pointer border-black border-2 border-dotted"
+      "absolute flex items-center text-base justify-center top-1 right-1 w-10 h-10 rounded-full chat cursor-pointer border-black border-2 border-dotted",
     );
     cls(chat, "min-w-[20rem] top-8 right-0 msg rounded-lg");
 
@@ -164,6 +164,7 @@ function init() {
     const trhead2 = document.createElement("tr");
     const trhead3 = document.createElement("tr");
     const trhead4 = document.createElement("tr");
+    const trhead5 = document.createElement("tr");
     const tbody = document.createElement("tbody");
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -171,9 +172,10 @@ function init() {
     thead.appendChild(trhead2);
     thead.appendChild(trhead3);
     thead.appendChild(trhead4);
+    thead.appendChild(trhead5);
     const fth = document.createElement("th");
     fth.classList.add("h-full");
-    fth.rowSpan = 4;
+    fth.rowSpan = 5;
     fth.textContent = "Date, Lieu et RDV";
     trhead.appendChild(fth);
     const cptMatchs = {};
@@ -190,7 +192,7 @@ function init() {
       fthJDiv.title = player.nomComplet;
       cls(
         fthJDiv,
-        "flex m-auto text-center items-center justify-center cursor-pointer"
+        "flex m-auto text-center items-center justify-center cursor-pointer",
       );
       fthJDiv.classList.add(player.teammate ? "teammate" : "renfort");
       fthJ.title = player.teammate ? "team" : "renfort";
@@ -199,9 +201,11 @@ function init() {
       tr.appendChild(fthJ);
       tbody.appendChild(tr);
       cptMatchs[j] = 0;
-      for (let z = 0; z < matchs.length; ++z) {
-        const match = matchs[z];
-        const isFinishMatch = match.date.getTime() < nextMatch.date.getTime();
+      const matches = Match.all;
+      for (let z = 0; z < matches.length; ++z) {
+        const match = matches[z];
+        const isFinishMatch =
+          nextMatch && match.date.getTime() < nextMatch.date.getTime();
         const td = document.createElement("td");
         td.id =
           "td_" +
@@ -215,6 +219,7 @@ function init() {
         }
         if (
           match.players.includes(player) ||
+          match.previsionnels.includes(player) ||
           match.renfortsAilleurs.includes(player)
         ) {
           ++cptMatchs[j];
@@ -231,11 +236,11 @@ function init() {
       const bgClazz = player.teammate
         ? bgClazzes[index]
         : nbPlayedMatch > 1
-        ? bgClazzes[0]
-        : bgClazzes[2];
+          ? bgClazzes[0]
+          : bgClazzes[2];
       cls(
         divPoints,
-        `flex m-auto w-6/10 items-center justify-center ${bgClazz} rounded-xl`
+        `flex m-auto w-6/10 items-center justify-center ${bgClazz} rounded-xl`,
       );
       spanPoints.textContent = nbPlayedMatch;
 
@@ -252,6 +257,7 @@ function init() {
       thD.textContent = match.dateFR;
 
       trhead.appendChild(thD);
+
       const thM = document.createElement("th");
       const adversaire = match.adversaire;
       const recepteur = match.club_recepteur;
@@ -259,10 +265,14 @@ function init() {
       const isAdvRec = adversaire === recepteur;
       thM.classList.add(isAdvRec ? "exterieur" : "interne");
       trhead2.appendChild(thM);
+
       const thH = document.createElement("th");
-      thH.textContent = match.rdv ? `${match.rdv} à ${match.salle}` : "À définir";
+      thH.textContent = match.rdv
+        ? `${match.rdv} à ${match.salle}`
+        : "À définir";
       thH.classList.add(isAdvRec ? "h_exterieur" : "h_interne");
       trhead3.appendChild(thH);
+
       const thScore = document.createElement("th");
       thScore.textContent = !isBlankOrNull(match.scoreClub)
         ? `${match.scoreClub} - ${match.scoreAdversaire}`
@@ -271,15 +281,42 @@ function init() {
         match.scoreClub > match.scoreAdversaire
           ? "winner"
           : match.scoreClub < match.scoreAdversaire
-          ? "loser"
-          : "match-nul"
+            ? "loser"
+            : "match-nul",
       );
       trhead4.appendChild(thScore);
-      const isFinishMatch = match.date.getTime() < nextMatch.date.getTime();
+
+      const thDoubles = document.createElement("th");
+      if (match.doubles) {
+        const { paire1, paire2 } = match.doubles;
+        const [j1, j2] = paire1;
+        const [j3, j4] = paire2;
+        const paires = [paire1, paire2];
+        const pairesColors = ["indigo-300", "orange-300"];
+        const divPaires = document.createElement("div");
+        cls(divPaires, "flex w-full flex-col items-center");
+        const shadow =
+          "black 1px 1px, black -1px 1px, black 1px -1px, black -1px -1px";
+
+        paires.forEach((el, index) => {
+          const span = document.createElement("span");
+          cls(span, `text-${pairesColors[index]} !font-bold italic`);
+          span.style.textShadow = shadow;
+          span.textContent = `${el[0].prenom} - ${el[1].prenom}`;
+          divPaires.appendChild(span);
+        });
+
+        thDoubles.appendChild(divPaires);
+      }
+      trhead5.appendChild(thDoubles);
+
+      const isFinishMatch =
+        nextMatch && match.date.getTime() < nextMatch.date.getTime();
       if (isFinishMatch) {
         thD.classList.add("disabledDate");
         thM.classList.add("disabledDate");
         thH.classList.add("disabledDate");
+        thDoubles.classList.add("disabledDate");
         thScore.classList.add("disabledDate");
       }
       const allJoueurs = [
@@ -293,7 +330,7 @@ function init() {
         const joueur = allJoueurs[k];
         const club = match.adversaire.replaceAll(" ", "_");
         const td = document.getElementById(
-          "td_" + club + "_" + joueur.nomComplet
+          "td_" + club + "_" + joueur.nomComplet,
         );
         td.classList.remove("non");
         if (match.players.includes(joueur)) {
@@ -316,27 +353,33 @@ function init() {
     }
     const nbMatchs = document.createElement("th");
     nbMatchs.textContent = "Nombre de matchs";
-    nbMatchs.rowSpan = 4;
+    nbMatchs.rowSpan = 5;
     trhead.appendChild(nbMatchs);
 
     const para = document.getElementById("led");
-    const simplifyAdversaire = Match.simplifyClub(nextMatch.adversaire);
-    para.textContent = para.textContent.replace(
-      "%MATCH%",
-      `${nextMatch.dateFR} - ${simplifyAdversaire}`
-    );
+    if (nextMatch) {
+      const simplifyAdversaire = Match.simplifyClub(nextMatch.adversaire);
+      para.textContent = para.textContent.replace(
+        "%MATCH%",
+        `${nextMatch.dateFR} - ${simplifyAdversaire}`,
+      );
+    } else {
+      para.textContent = para.textContent.replace(
+        "%MATCH%",
+        `Aucun pour le moment`,
+      );
+    }
   });
 }
 
 /**
-  * Permet de vérifier si une chaîne est un nombre ou non
-  * @author : https://coreui.io/blog/how-to-check-if-string-is-number-in-javascript/
-  * @return vrai si c'est le cas, faux sinon
-*/
+ * Permet de vérifier si une chaîne est un nombre ou non
+ * @author : https://coreui.io/blog/how-to-check-if-string-is-number-in-javascript/
+ * @return vrai si c'est le cas, faux sinon
+ */
 function isNumeric(string) {
   return /^[+-]?\d+(\.\d+)?$/.test(string);
 }
-
 
 function replierLegende(id) {
   const contour = document.getElementById(id);
