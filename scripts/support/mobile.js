@@ -213,8 +213,8 @@ function initMobile() {
           }
         }
       }
-
-      if (match.remplacants.length > 0 || match.absents.length > 0) {
+      const realAbsents = match.absents.filter(el => el.teammate);
+      if (match.remplacants.length > 0 || realAbsents.length > 0) {
         const divJoueursRemplacants = document.createElement("div");
         cls(divJoueursRemplacants, classDiv + " impossibles");
         if (match.remplacants.length > 0) {
@@ -230,14 +230,14 @@ function initMobile() {
             divJoueursRemplacants.appendChild(joueur);
           }
         }
-
-        if (match.absents.length > 0) {
+  
+        if (realAbsents.length > 0) {
           const spanAbsents = document.createElement("span");
           spanAbsents.textContent = "Absents";
           cls(spanAbsents, "absents font-bold");
           divJoueursRemplacants.appendChild(spanAbsents);
-          for (let jPr = 0; jPr < match.absents.length; ++jPr) {
-            const jp = match.absents[jPr];
+          for (let jPr = 0; jPr < realAbsents.length; ++jPr) {
+            const jp = realAbsents[jPr];
             const joueur = document.createElement("span");
             cls(joueur, "italic");
             joueur.textContent = jp.prenom;
