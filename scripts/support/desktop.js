@@ -333,9 +333,19 @@ function simplifyClub(club) {
   const MAX_WORDS_KEPT_IN_CLUB = 3;
   return words
     .filter(
-      (val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB && !val.isDigit && !val.startsWith("(")
+      (val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB && !isNumeric(val) && !val.startsWith("(")
     ).join(" ");
 }
+
+/**
+  * Permet de vérifier si une chaîne est un nombre ou non
+  * @author : https://coreui.io/blog/how-to-check-if-string-is-number-in-javascript/
+  * @return vrai si c'est le cas, faux sinon
+*/
+function isNumeric(string) {
+  return /^[+-]?\d+(\.\d+)?$/.test(string);
+}
+
 
 function replierLegende(id) {
   const contour = document.getElementById(id);
