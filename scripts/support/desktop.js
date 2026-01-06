@@ -330,11 +330,11 @@ function init() {
 
 function simplifyClub(club) {
   const words = club.split(" ");
-  const MAX_WORDS_KEPT_IN_CLUB = 4;
-  if (words.length <= MAX_WORDS_KEPT_IN_CLUB) {
-    return words;
-  }
-  return words.filter((val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB).join(" ");
+  const MAX_WORDS_KEPT_IN_CLUB = 3;
+  return words
+    .filter(
+      (val, ind) => ind <= MAX_WORDS_KEPT_IN_CLUB && !val.isDigit && !val.startsWith("(")
+    ).join(" ");
 }
 
 function replierLegende(id) {
