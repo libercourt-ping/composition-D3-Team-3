@@ -255,7 +255,7 @@ function init() {
       const thM = document.createElement("th");
       const adversaire = match.adversaire;
       const recepteur = match.club_recepteur;
-      thM.textContent = adversaire;
+      thM.textContent = simplifyClub(adversaire);
       const isAdvRec = adversaire === recepteur;
       thM.classList.add(isAdvRec ? "exterieur" : "interne");
       trhead2.appendChild(thM);
@@ -333,7 +333,7 @@ function simplifyClub(club) {
   const MAX_WORDS_KEPT_IN_CLUB = 3;
   return words
     .filter(
-      (val, ind) => ind <= MAX_WORDS_KEPT_IN_CLUB && !val.isDigit && !val.startsWith("(")
+      (val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB && !val.isDigit && !val.startsWith("(")
     ).join(" ");
 }
 
