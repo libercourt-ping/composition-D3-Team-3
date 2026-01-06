@@ -21,6 +21,15 @@ class Match {
     Match.all.push(this);
   }
 
+  static simplifyClub(club) {
+  const words = club.split(" ");
+  const MAX_WORDS_KEPT_IN_CLUB = 3;
+  return words
+    .filter(
+      (val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB && !isNumeric(val) && !val.startsWith("(")
+    ).join(" ");
+}
+
   static nextMatch() {
     const today = new Date();
 
