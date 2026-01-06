@@ -145,15 +145,17 @@ function setConfig(matchs) {
   matchs[5].setRdv("08 h 15");
 
   matchs[6].setPlayers([joueurs.VINCENT, joueurs.CEDRIC]);
-  matchs[6].setPrevisionnels([joueurs.HAMED]);
+  matchs[6].setPrevisionnels([joueurs.FRED]);
   matchs[6].setAbsents([
     joueurs.MATHEO,
     joueurs.HUGO,
     joueurs.LEO,
     joueurs.NATHALIE,
     joueurs.KAHYS,
-    joueurs.STEVE
+    joueurs.STEVE,
+    joueurs.HAMED,
+    joueurs.QUENTIN
   ]);
-  matchs[6].setRemplacants([joueurs.QUENTIN, joueurs.FRED, joueurs.YOHAN]);
+  matchs[6].setRemplacants([joueurs.YOHAN]);
   matchs[6].setRdv("08 h 40", "Salle LANGLET, complexe Antoine Victor, Libercourt");
 }
