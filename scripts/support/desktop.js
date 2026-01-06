@@ -255,7 +255,7 @@ function init() {
       const thM = document.createElement("th");
       const adversaire = match.adversaire;
       const recepteur = match.club_recepteur;
-      thM.textContent = simplifyClub(adversaire);
+      thM.textContent = Match.simplifyClub(adversaire);
       const isAdvRec = adversaire === recepteur;
       thM.classList.add(isAdvRec ? "exterieur" : "interne");
       trhead2.appendChild(thM);
