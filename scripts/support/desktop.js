@@ -320,11 +320,21 @@ function init() {
     trhead.appendChild(nbMatchs);
 
     const para = document.getElementById("led");
+    const simplifyAdversaire = simplifyClub(nextMatch.adversaire);
     para.textContent = para.textContent.replace(
       "%MATCH%",
-      `${nextMatch.dateFR} - ${nextMatch.adversaire}`
+      `${nextMatch.dateFR} - ${simplifyAdversaire}`
     );
   });
+}
+
+function simplifyClub(club) {
+  const words = club.split(" ");
+  const MAX_WORDS_KEPT_IN_CLUB = 4;
+  if (words.length <= MAX_WORDS_KEPT_IN_CLUB) {
+    return words;
+  }
+  return words.filter((val, ind) => ind < MAX_WORDS_KEPT_IN_CLUB).join(" ");
 }
 
 function replierLegende(id) {
