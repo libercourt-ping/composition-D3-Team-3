@@ -29,7 +29,6 @@ async function getMatches() {
       const scoreb = parseInt(el.scoreb, 10);
       
       match.setScore(scorea, scoreb);
-      console.log(match);
     }
     return match;
   });
