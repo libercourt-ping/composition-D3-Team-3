@@ -1,3 +1,6 @@
+/**
+ * @type {Match[]}
+ */
 let matchs = [];
 
 async function getMatches() {
@@ -16,8 +19,10 @@ async function getMatches() {
     .catch(() => {
       return getElements();
     });
+
   const isBlankOrNull = (el) =>
     el == null || (typeof el === "string" && el.length === 0);
+
   matchs = matches.data.map((el) => {
     const day = el.datereelle.substring(3, 5);
     const month = el.datereelle.substring(0, 2);
@@ -27,7 +32,7 @@ async function getMatches() {
     if (!isBlankOrNull(el.scorea) && !isBlankOrNull(el.scoreb)) {
       const scorea = parseInt(el.scorea, 10);
       const scoreb = parseInt(el.scoreb, 10);
-      
+
       match.setScore(scorea, scoreb);
     }
     return match;
@@ -41,7 +46,9 @@ window.onload = function () {
   d(
     async () => {
       await getMatches();
-
+      if (matchs.length === 0) {
+        return;
+      }
       if (isMobile) {
         initMobile();
       } else {
@@ -73,7 +80,7 @@ window.onload = function () {
           init();
         }
       }
-    }
+    },
   );
 };
 function getElements() {

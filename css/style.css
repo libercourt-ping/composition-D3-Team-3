@@ -4,21 +4,22 @@
   --fond: #bebebe;
   --fond-table: #f5f5f5;
   --unset: #fafafa;
-  --planning-green: #62a562;
+  --planning-green: #62a562d0;
   --planning-blue: #51a2ff;
-  --planning-red: #ff6467;
+  --planning-red: #ff646755;
   --planning-purple: #c27aff;
   --no-info: #eace703e;
   --chat: #495682;
   --disabled-opacity: 0.4;
   --bg-renfort: #441d0ad0;
   /* Chars */
-  --non: "!";
-  --absent: "\20E0";
-  --present: "\2713";
-  --renfort: "\2690";
-  --remplacant: "\2BB8";
-  --previsionnel: "\25F4";
+  --non: "❓";
+  /* --absent: "👻⛔"; */
+  --absent: "⛔";
+  --present: "🏓";
+  --renfort: "👮";
+  --remplacant: "🥷";
+  --previsionnel: "📌";
 }
 
 h1 {
@@ -112,39 +113,74 @@ td.non::before {
   border: 1px solid var(--no-info);
   color: black;
 }
+
+td.oui::before,
+td.absent::before,
+td.remplacant::before {
+  font-size: x-large;
+}
+
 td.oui::before {
   content: var(--present);
+}
+
+td.oui._teammate:not(._renfort)::before {
+  padding: 0.3rem 1rem;
   background-color: var(--planning-green);
   border: 1px solid var(--planning-green);
   color: whitesmoke;
 }
+
 td.absent::before {
   content: var(--absent);
+}
+
+td.absent._teammate:not(._renfort)::before {
   padding: 0.3rem 1rem;
   border: 1px solid var(--planning-red);
   background-color: var(--planning-red);
   color: white;
 }
+
 td.renforts::before {
   content: var(--renfort);
+}
+
+td.renforts._teammate:not(._renfort)::before {
+  padding: 0.3rem 1rem;
   font-size: 18px;
   background-color: var(--bg-renfort);
   border: 1px solid var(--bg-renfort);
   color: var(--fond-table);
 }
+
 td.remplacant::before {
   content: var(--remplacant);
+}
+
+td.remplacant._teammate:not(._renfort)::before {
+  padding: 0.3rem 1rem;
   background-color: var(--planning-purple);
   border: 1px solid var(--planning-purple);
   color: var(--fond-table);
-  padding: 0.3rem 0.5rem;
 }
+
 td.previsionnel::before {
   content: var(--previsionnel);
-  padding: 0.3rem 0.5rem;
+}
+
+td.previsionnel._teammate:not(._renfort)::before {
+  padding: 0.3rem 1rem;
   border: 1px solid var(--planning-blue);
   background-color: var(--planning-blue);
   color: var(--fond-table);
+}
+
+td._renfort.absent::before {
+  color: red !important;
+}
+td._renfort.oui::before {
+  color: green !important;
 }
 
 th.th_joueur {
@@ -173,7 +209,10 @@ td.disabledDate {
   font-family: "LED";
   color: #fa0;
   animation: scroll 10s linear infinite;
-  text-shadow: 0 0 5px #0f04, 0 0 10px #0f04, 0 0 20px #0f04;
+  text-shadow:
+    0 0 5px #0f04,
+    0 0 10px #0f04,
+    0 0 20px #0f04;
 }
 
 .msg {
@@ -239,6 +278,5 @@ td.disabledDate {
 }
 
 .renfort {
-  background-color: var(--bg-renfort);
-  color: var(--fond);
+  color: var(--bg-renfort);
 }
