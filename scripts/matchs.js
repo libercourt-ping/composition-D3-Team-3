@@ -143,12 +143,12 @@ function setConfig(matchs) {
     joueurs.QUENTIN
   ]);
   matchs[5].setRdv("08 h 15");
+  matchs[5].setDoubles([joueurs.VINCENT, joueurs.YOHAN],[joueurs.STEVE, joueurs.KAHYS]);
 
-  matchs[6].setPlayers([joueurs.VINCENT, joueurs.CEDRIC]);
-  matchs[6].setPrevisionnels([joueurs.FRED]);
+  matchs[6].setPlayers([joueurs.VINCENT, joueurs.CEDRIC, joueurs.YOHAN, joueurs.HUGO]);
   matchs[6].setAbsents([
     joueurs.MATHEO,
-    joueurs.HUGO,
+    joueurs.FRED,
     joueurs.LEO,
     joueurs.NATHALIE,
     joueurs.KAHYS,
@@ -156,6 +156,6 @@ function setConfig(matchs) {
     joueurs.HAMED,
     joueurs.QUENTIN
   ]);
-  matchs[6].setRemplacants([joueurs.YOHAN]);
   matchs[6].setRdv("08 h 40", "Salle LANGLET, complexe Antoine Victor, Libercourt");
+  matchs[6].setDoubles([joueurs.VINCENT, joueurs.YOHAN],[joueurs.CEDRIC, joueurs.HUGO]);
 }
